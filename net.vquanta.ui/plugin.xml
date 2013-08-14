@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            name="Ui Diagram Type"
+            type="ui"
+            id="net.vquanta.ui.uiDiagramType">
+      </diagramType>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            name="Ui Diagram Type Provider"
+            class="net.vquanta.ui.diagram.VQuantaDiagramTypeProvider"
+            id="net.vquanta.ui.uiDiagramTypeProvider">
+         <diagramType
+               id="net.vquanta.ui.uiDiagramType">
+         </diagramType>
+      </diagramTypeProvider>
+   </extension>
+
+</plugin>
