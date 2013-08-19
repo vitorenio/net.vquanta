@@ -16,43 +16,43 @@ import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 
 
-public class AddDomainObjectFeature extends AbstractAddFeature implements
-		IAddFeature {
+public class AddDomainObjectFeature extends AbstractAddFeature implements IAddFeature {
 
-	public AddDomainObjectFeature(IFeatureProvider fp) {
-		super(fp);
-	}
+  public AddDomainObjectFeature(IFeatureProvider fp) {
+    super(fp);
+  }
 
-	@Override
-	public boolean canAdd(IAddContext context) {
-		// TODO: check for right domain object instance below
-		return /* context.getNewObject() instanceof DomainObject && */ context.getTargetContainer() instanceof Diagram;
-	}
+  @Override
+  public boolean canAdd(IAddContext context) {
+    // TODO: check for right domain object instance below
+    return /* context.getNewObject() instanceof DomainObject && */context.getTargetContainer() instanceof Diagram;
+  }
 
-	@Override
-	public PictogramElement add(IAddContext context) {
+  @Override
+  public PictogramElement add(IAddContext context) {
 
-		Diagram targetDiagram = (Diagram) context.getTargetContainer();
-		IPeCreateService peCreateService = Graphiti.getPeCreateService();
-		IGaService gaService = Graphiti.getGaService();
+    Diagram targetDiagram = (Diagram) context.getTargetContainer();
+    IPeCreateService peCreateService = Graphiti.getPeCreateService();
+    IGaService gaService = Graphiti.getGaService();
 
-		ContainerShape containerShape = peCreateService.createContainerShape(targetDiagram, true);
-		RoundedRectangle roundedRectangle = gaService.createRoundedRectangle(containerShape, 5, 5);
-		gaService.setLocationAndSize(roundedRectangle, context.getX(), context.getY(), context.getWidth(), context.getHeight());
-		roundedRectangle.setFilled(false);
-		
-		Shape shape = peCreateService.createShape(containerShape, false);
-		Text text = gaService.createText(shape, "DomainObject");
-		text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);
-		text.setVerticalAlignment(Orientation.ALIGNMENT_CENTER);
-		gaService.setLocationAndSize(text, 0, 0, context.getWidth(), context.getHeight());
+    ContainerShape containerShape = peCreateService.createContainerShape(targetDiagram, true);
+    RoundedRectangle roundedRectangle = gaService.createRoundedRectangle(containerShape, 5, 5);
+    gaService.setLocationAndSize(roundedRectangle, context.getX(), context.getY(),
+        context.getWidth(), context.getHeight());
+    roundedRectangle.setFilled(false);
 
-		peCreateService.createChopboxAnchor(containerShape);
+    Shape shape = peCreateService.createShape(containerShape, false);
+    Text text = gaService.createText(shape, "DomainObject");
+    text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);
+    text.setVerticalAlignment(Orientation.ALIGNMENT_CENTER);
+    gaService.setLocationAndSize(text, 0, 0, context.getWidth(), context.getHeight());
 
-		// TODO: enable the link to the domain object
-		// Object addedDomainObject = context.getNewObject();
-		// link(containerShape, addedDomainObject);
+    peCreateService.createChopboxAnchor(containerShape);
 
-		return containerShape;
-	}
+    // TODO: enable the link to the domain object
+    // Object addedDomainObject = context.getNewObject();
+    // link(containerShape, addedDomainObject);
+
+    return containerShape;
+  }
 }

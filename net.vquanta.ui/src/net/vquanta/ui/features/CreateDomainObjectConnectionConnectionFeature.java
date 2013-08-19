@@ -9,44 +9,47 @@ import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 
 public class CreateDomainObjectConnectionConnectionFeature extends AbstractCreateConnectionFeature
-		implements ICreateConnectionFeature {
+    implements
+      ICreateConnectionFeature {
 
-	public CreateDomainObjectConnectionConnectionFeature(IFeatureProvider fp) {
-		super(fp, "DomainObjectConnection", "Creates a new DomainObjectConnection between two DomainObjects");
-	}
+  public CreateDomainObjectConnectionConnectionFeature(IFeatureProvider fp) {
+    super(fp, "DomainObjectConnection",
+        "Creates a new DomainObjectConnection between two DomainObjects");
+  }
 
-	@Override
-	public boolean canStartConnection(ICreateConnectionContext context) {
-		// TODO: check for right domain object instance below
-		// return getBusinessObjectForPictogramElement(context.getSourcePictogramElement()) instanceof <DomainObject>;
+  @Override
+  public boolean canStartConnection(ICreateConnectionContext context) {
+    // TODO: check for right domain object instance below
+    // return getBusinessObjectForPictogramElement(context.getSourcePictogramElement()) instanceof <DomainObject>;
 
-		return true;
-	}
+    return true;
+  }
 
-	@Override
-	public boolean canCreate(ICreateConnectionContext context) {
-		PictogramElement sourcePictogramElement = context.getSourcePictogramElement();
-		PictogramElement targetPictogramElement = context.getTargetPictogramElement();
+  @Override
+  public boolean canCreate(ICreateConnectionContext context) {
+    PictogramElement sourcePictogramElement = context.getSourcePictogramElement();
+    PictogramElement targetPictogramElement = context.getTargetPictogramElement();
 
-		// TODO: check for right domain object instance below
-		// if (getBusinessObjectForPictogramElement(sourcePictogramElement) instanceof <DomainObject> && getBusinessObjectForPictogramElement(targetPictogramElement) instanceof <DomainObject>) {
-		//  	return true;
-		// }
-		
-		return sourcePictogramElement != null && targetPictogramElement != null;
-	}
+    // TODO: check for right domain object instance below
+    // if (getBusinessObjectForPictogramElement(sourcePictogramElement) instanceof <DomainObject> && getBusinessObjectForPictogramElement(targetPictogramElement) instanceof <DomainObject>) {
+    // return true;
+    // }
 
-	@Override
-	public Connection create(ICreateConnectionContext context) {
-		Connection newConnection = null;
+    return sourcePictogramElement != null && targetPictogramElement != null;
+  }
 
-		// TODO: create the domain object connection here
-		Object newDomainObjectConnetion = null;
+  @Override
+  public Connection create(ICreateConnectionContext context) {
+    Connection newConnection = null;
 
-		AddConnectionContext addContext = new AddConnectionContext(context.getSourceAnchor(), context.getTargetAnchor());
-		addContext.setNewObject(newDomainObjectConnetion);
-		newConnection = (Connection) getFeatureProvider().addIfPossible(addContext);
+    // TODO: create the domain object connection here
+    Object newDomainObjectConnetion = null;
 
-		return newConnection;
-	}
+    AddConnectionContext addContext =
+        new AddConnectionContext(context.getSourceAnchor(), context.getTargetAnchor());
+    addContext.setNewObject(newDomainObjectConnetion);
+    newConnection = (Connection) getFeatureProvider().addIfPossible(addContext);
+
+    return newConnection;
+  }
 }

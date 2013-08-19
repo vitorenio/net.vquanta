@@ -4,8 +4,13 @@ import org.eclipse.graphiti.dt.AbstractDiagramTypeProvider;
 
 public class VQuantaDiagramTypeProvider extends AbstractDiagramTypeProvider {
 
-	public VQuantaDiagramTypeProvider() {
-		super();
-		setFeatureProvider(new VQuantaFeatureProvider(this));
-	}
+  public VQuantaDiagramTypeProvider() {
+    super();
+    setFeatureProvider(new VQuantaFeatureProvider(this));
+  }
+  
+  @Override
+  public boolean isAutoUpdateAtStartup() {
+    return true;
+  }
 }
