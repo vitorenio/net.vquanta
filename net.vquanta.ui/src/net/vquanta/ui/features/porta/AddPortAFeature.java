@@ -105,6 +105,7 @@ public class AddPortAFeature extends AbstractAddFeature {
       link(shape, addedClass);
     }
 //
+    layoutPictogramElement(containerShape);
     return containerShape;
   }
 

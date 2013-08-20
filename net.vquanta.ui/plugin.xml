@@ -6,7 +6,7 @@
          point="org.eclipse.graphiti.ui.diagramTypes">
       <diagramType
             name="Ui Diagram Type"
-            type="ui"
+            type="Quantum Circuit"
             id="net.vquanta.ui.uiDiagramType">
       </diagramType>
    </extension>
